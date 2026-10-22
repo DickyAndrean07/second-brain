@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-22] refactor | Penambahan Aturan Emas Tata Kelola AI Team (Diva & Bagus)
+- **Target Files**: [[AGENTS.md]], [[agent.md]]
+- **Highlights**: Mengintegrasikan Bagian II Tata Kelola AI Team: arsitektur 2-agent (Diva & Bagus), 4 sumber kebenaran (Second Brain, Repo Proyek, Kanban, memory.md), format wajib task Kanban, alur status (Review & Changes Requested), standar testing pragmatis, standar laporan hasil Bagus, SOP onboarding agen baru, dan pemisahan 4 repositori kerja.
+
 ## [2026-10-22] ingest | Seri AI Team (Video 1 - 6) & Sintesis Master
 - **Raw Sources**:
   - [[raw/video 1 - rapi.md]]

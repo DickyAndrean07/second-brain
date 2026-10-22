@@ -127,3 +127,113 @@ Pengguna dapat memicu alur kerja dengan kalimat seperti:
 - **"Tanya wiki: bagaimana hubungan X dengan Y?"** → Menjalankan Operasi Query.
 - **"Lint wiki"** atau **"Periksa kesehatan second brain"** → Menjalankan Operasi Lint.
 - **"Buat sintesis perbandingan X dan Y"** → Menjalankan query mendalam dan menyimpannya ke `wiki/synthesis/`.
+
+---
+
+# 🏛️ Bagian II: Tata Kelola AI Team (Diva & Bagus)
+
+Bagian ini mengatur pembagian tugas, hak akses, batas keamanan, dan alur kerja teknis antara **Mas Dicky (Owner)**, **Diva (Lead Agent)**, dan **Bagus (Builder Agent)**.
+
+---
+
+## 👥 1. Arsitektur Dua Agent (Minimalis & Ringan)
+Untuk fase saat ini (mahasiswa, fokus portofolio & akademik, server VPS 2 vCPU 4GB RAM), tim dibatasi hanya 2 agen:
+
+1. **Diva (Lead Agent + Knowledge Curator + Reviewer)**
+   - **Peran:** Asisten pribadi utama Mas Dicky, koordinator operasional, kurator Second Brain, dan peninjau kualitas kerjaan Bagus.
+   - **Hak Akses:**
+     - Boleh: Membaca & menulis repository `second-brain/`, merawat `raw/`, `wiki/`, `index.md`, dan `log.md`.
+     - Dilarang: Menulis source code project secara langsung, mengubah credential/secret, menjalankan operasi destruktif, atau melakukan merge ke branch `main` tanpa persetujuan eksplisit Mas Dicky.
+2. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
+   - **Peran:** Eksekutor teknis pembuatan website, perbaikan kode, dan pembuatan prototype sistem.
+   - **Hak Akses:** Bekerja hanya di workspace isolasi atau Git branch `bagus/*` pada repository staging/proyek yang ditentukan dalam task Kanban.
+
+*(Catatan: Agen spesialis lain seperti Finance/Marketing/Knowledge Agent terpisah TIDAK DIBUAT untuk menjaga sistem tetap ramping).*
+
+---
+
+## 🧭 2. Empat Sumber Kebenaran (Sources of Truth)
+Agar tidak terjadi tumpang tindih data:
+- **Second Brain (`second-brain/`)**: Dokumentasi, SOP, ringkasan riset, arsitektur, dan keputusan tim.
+- **Repository Proyek**: Source code aplikasi nyata (`portfolio-website/`, dll).
+- **Hermes Kanban**: Status pekerjaan dan tugas yang sedang aktif.
+- **`memory.md`**: Konteks operasional sistem jangka panjang yang ringkas.
+
+---
+
+## 📋 3. Format Wajib Task Hermes Kanban
+Setiap task yang dibuat Diva untuk Bagus di Hermes Kanban WAJIB memiliki komponen berikut:
+
+```markdown
+# [TASK-ID]: [Judul Task Singkat]
+
+- **Tujuan**: [Apa hasil akhir konkret yang diharapkan]
+- **Workspace**: [Path direktori kerja terisolasi]
+- **Repository**: [Nama repositori target]
+- **Target Branch**: [Branch pengerjaan, format: bagus/<task-id>-<deskripsi>]
+- **File Boleh Diubah**: [Daftar file/folder yang diizinkan]
+- **File Dilarang Diubah**: [.env, config utama, branch main, dependency inti, dll]
+- **Kriteria Selesai (DoD)**: [Checklist fungsi yang harus terpenuhi]
+- **Cara Pengujian**: [Perintah test atau metode verifikasi visual/smoke test]
+- **Batasan Keamanan**: [Larangan tools tertentu, larangan network di luar scope, dll]
+```
+
+---
+
+## 🔄 4. Status Alur Kerja Task Kanban
+Setiap task harus bergerak melalui status yang jelas:
+```text
+BACKLOG ──► READY ──► IN_PROGRESS ──► REVIEW ──► APPROVED ──► DONE
+                                         │
+                                         ▼
+                                CHANGES_REQUESTED
+                                  (kembali ke IN_PROGRESS)
+```
+- **REVIEW**: Diva meninjau kode dan hasil testing Bagus.
+- **CHANGES_REQUESTED**: Diva mengembalikan task ke Bagus jika ada kriteria yang melanggar SOP atau belum lolos uji.
+- **APPROVED**: Mas Dicky memberikan persetujuan final setelah review Diva lolos.
+- **DONE**: Task selesai dan di-merge ke branch utama oleh Mas Dicky.
+
+---
+
+## 🧪 5. Pendekatan Testing Pragmatis
+Bagus tidak diwajibkan menggunakan TDD (Test-Driven Development) penuh untuk semua pekerjaan. Gunakan pendekatan sesuai jenis proyek:
+- **Backend / Logika Bisnis / API**: Wajib **Unit Test** otomatis.
+- **UI / Frontend / Halaman Visual**: Wajib **Browser & Visual Check** (responsivitas, layout, navigasi).
+- **Prototype / Eksperimen Cepat**: Wajib **Smoke Test & Checklist Fungsi Inti**.
+
+---
+
+## 📊 6. Standar Laporan Hasil Kerja Bagus
+Setiap kali Bagus meminta review (`kanban_request_review`), laporannya WAJIB menyertakan:
+1. **Ringkasan Perubahan**: Apa saja yang telah dibuat/diperbaiki.
+2. **File yang Diubah**: Daftar file yang ditambah, diedit, atau dihapus.
+3. **Branch dan Commit**: Nama branch (`bagus/*`) dan commit hash terakhir.
+4. **Cara Menjalankan Project**: Command instalasi dan langkah menjalankan server lokal.
+5. **Hasil Testing**: Log pengujian unit test atau checklist smoke test.
+6. **Preview/Screenshot**: Lampiran visual jika hasil kerja berupa antarmuka website.
+7. **Error / Keterbatasan yang Masih Tersisa**: Catatan jujur mengenai hal-hal yang belum sempurna atau kendala yang dihadapi.
+
+---
+
+## 🛡️ 7. SOP Onboarding Agen Baru
+Jika di masa depan tim membutuhkan agen baru, ikuti prosedur ketat berikut:
+1. **Kebutuhan Baru Muncul**: Muncul kebutuhan spesifik yang tidak dapat ditangani Diva atau Bagus.
+2. **Analisis Kebutuhan**: Diva menganalisis apakah benar-benar butuh agen baru atau cukup skill tambahan.
+3. **Proposal Role & Akses**: Diva menyusun proposal tertulis (tugas, batasan tool, alokasi memori/CPU).
+4. **Persetujuan Owner**: Mas Dicky menyetujui proposal secara eksplisit.
+5. **Konfigurasi Agen**: Diva menyiapkan file konfigurasi agen (`soul.md`, `agent.md`, permissions).
+6. **Masa Uji Coba**: Agen baru diuji di sandbox/kanban tertutup.
+7. **Aktivasi Resmi**: Agen diaktifkan untuk tugas nyata.
+
+> [!danger] Aturan Keamanan Onboarding
+> Diva diperbolehkan menyiapkan rancangan konfigurasi agen baru, tetapi **DILARANG KERAS mengaktifkan agen yang memiliki akses sensitif atau akses sistem tanpa persetujuan Mas Dicky**.
+
+---
+
+## 📦 8. Pemisahan Repositori Kerja
+Pekerjaan dipisahkan dalam 4 repositori independen:
+1. **`second-brain/`**: Pusat dokumentasi, wiki pengetahuan, dan SOP tim (dikelola Diva).
+2. **`portfolio-website/`**: Website portofolio pribadi Mas Dicky untuk melamar magang (dikerjakan Bagus).
+3. **`prototype-skripsi/`**: Proyek akademik & prototype penelitian skripsi (dikerjakan Bagus).
+4. **`ai-automation-demo/`**: Prototipe layanan automasi AI untuk persiapan bisnis (dikerjakan Bagus).
