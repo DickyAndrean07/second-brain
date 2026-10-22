@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-22] plan | Penyusunan Paket 6 Task Kanban EduNotify MVP untuk Bagus
+- **Target Files**: [[wiki/projects/edunotify-tasks.md]], [[index.md]]
+- **Highlights**: Menyusun paket 6 task implementasi modular untuk Bagus (EDUNOTIFY-01 s/d EDUNOTIFY-06) dengan pemetaan dependensi, workspace, file bounds, strategi pengujian (unit/visual/smoke), dan Definition of Done sesuai tata kelola AGENTS.md.
+
 ## [2026-10-22] spec | Inisiasi Proyek EduNotify & Penyusunan PRD MVP
 - **Target Files**: [[wiki/projects/edunotify-prd.md]], [[index.md]]
 - **Highlights**: Menyusun Product Requirements Document (PRD) versi 1.0.0 untuk EduNotify. Mencakup alur presensi estafet harian berbasis jadwal KBM, integrasi WhatsApp Click-to-Chat manual, matriks hak akses RBAC, hirarki koreksi presensi H s/d H-3, Early Warning System deterministik, arsitektur AI provider-agnostic terpseudonimkan, dan skema multitenancy `school_id`.
