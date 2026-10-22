@@ -1,0 +1,56 @@
+---
+type: log
+title: Second Brain Operations Log
+updated: 2026-10-22
+---
+
+# 📜 Second Brain — Operations Log
+
+Catatan kronologis semua aktivitas pemeliharaan wiki (ingest, query, lint, refactor).
+Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah di-parse dan dilacak.
+
+---
+
+## [2026-10-22] ingest | Seri AI Team (Video 1 - 6) & Sintesis Master
+- **Raw Sources**:
+  - [[raw/video 1 - rapi.md]]
+  - [[raw/video 2 - rapi.md]]
+  - [[raw/video 3 - rapi.md]]
+  - [[raw/video 4 - rapi.md]]
+  - [[raw/video 5 - rapi.md]]
+  - [[raw/video 6 - rapi.md]]
+- **Created Source Notes**:
+  - [[wiki/sources/video-1-pengenalan-hermes-dan-instalasi.md]]
+  - [[wiki/sources/video-2-hermes-dashboard-telegram-memori.md]]
+  - [[wiki/sources/video-3-sandbox-google-drive-dan-gws.md]]
+  - [[wiki/sources/video-4-struktur-ai-team-dan-arsitektur.md]]
+  - [[wiki/sources/video-5-membangun-mission-control-ai-team.md]]
+  - [[wiki/sources/video-6-instalasi-ruang-mission-control-3d.md]]
+- **Created Concepts**:
+  - [[wiki/concepts/ai-agent-vs-chatbot.md]]
+  - [[wiki/concepts/sandbox-security.md]]
+  - [[wiki/concepts/agent-memory-architecture.md]]
+  - [[wiki/concepts/multi-agent-system.md]]
+  - [[wiki/concepts/skill-as-sop.md]]
+  - [[wiki/concepts/mission-control.md]]
+  - [[wiki/concepts/model-context-protocol.md]]
+- **Created Entities**:
+  - [[wiki/entities/hermes-agent.md]]
+  - [[wiki/entities/opencode.md]]
+  - [[wiki/entities/obsidian.md]]
+  - [[wiki/entities/google-workspace-cli.md]]
+  - [[wiki/entities/termius.md]]
+  - [[wiki/entities/openrouter.md]]
+  - [[wiki/entities/ruang-mission-control.md]]
+- **Created Synthesis**:
+  - [[wiki/synthesis/arsitektur-lengkap-ai-team-otonom.md]]
+- **Index Updated**: [[index.md]] diperbarui dengan total 6 sumber, 7 konsep, 7 entitas, dan 1 dokumen sintesis.
+- **Highlights**: Ingest batch 6 transkrip video mengenai pembangunan AI Team berbasis Hermes, integrasi Google Workspace sandbox, arsitektur memori Obsidian, pengembangan software otonom OpenCode, dan observabilitas Ruang Mission Control 3D.
+
+## [2026-10-22] init | LLM Wiki Initialized
+- **Action**: Inisialisasi struktur repositori LLM Wiki (Second Brain).
+- **Detail**:
+  - Dibuat struktur folder `raw/`, `raw/assets/`, dan `wiki/` (`sources/`, `concepts/`, `entities/`, `synthesis/`).
+  - Dibuat panduan schema agen `agent.md` & `AGENTS.md`.
+  - Dikonfigurasi skill `llm-wiki` untuk automasi alur kerja ingest, query, dan lint.
+- **Status**: Siap menerima sumber pertama di `raw/`.
