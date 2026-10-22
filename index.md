@@ -49,6 +49,14 @@ Orang, organisasi, tools, aplikasi, framework, dan perangkat lunak penting:
 
 ---
 
+## 🚀 Projects & Product Specs (`wiki/projects/`)
+Spesifikasi produk, arsitektur teknis, dan PRD proyek yang dibangun:
+
+- [[wiki/projects/edunotify-prd|Product Requirements Document (PRD) — EduNotify MVP]] — Dokumen kebutuhan produk lengkap sistem absensi sekolah estafet berbasis jadwal, integrasi WhatsApp Click-to-Chat manual, Early Warning System deterministik, dan analitik AI provider-agnostic.
+- [[wiki/projects/edunotify-tasks|Paket Task Implementasi EduNotify MVP (Handoff Bagus)]] — Spesifikasi 6 task Kanban resmi implementasi EduNotify untuk Bagus mencakup kriteria DoD, dependensi, dan batasan keamanan.
+
+---
+
 ## 🔮 Synthesis & Comparisons (`wiki/synthesis/`)
 Analisis lintas-dokumen, jawaban mendalam terhadap pertanyaan riset, dan cetak biru komprehensif:
 
