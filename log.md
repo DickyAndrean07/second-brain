@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-22] refactor | Formalisasi Siklus Estafet Otonom (Autonomous Pipeline Loop)
+- **Target Files**: [[AGENTS.md]], [[agent.md]]
+- **Highlights**: Menambahkan klausul operasional di Bagian II Pasal 4: Diva mengelola estafet task secara otonom (Task N selesai ➔ Diva review ➔ jika revisi kirim feedback, jika lolos auto-dispatch Task N+1 ke Kanban), siklus berlanjut hingga semua task tuntas sebelum laporan final ke Mas Dicky, dengan proteksi Circuit Breaker (maksimal 2x gagal berturut-turut langsung eskalasi ke Owner).
+
 ## [2026-10-22] plan | Penyusunan Paket 6 Task Kanban EduNotify MVP untuk Bagus
 - **Target Files**: [[wiki/projects/edunotify-tasks.md]], [[index.md]]
 - **Highlights**: Menyusun paket 6 task implementasi modular untuk Bagus (EDUNOTIFY-01 s/d EDUNOTIFY-06) dengan pemetaan dependensi, workspace, file bounds, strategi pengujian (unit/visual/smoke), dan Definition of Done sesuai tata kelola AGENTS.md.

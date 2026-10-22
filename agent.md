@@ -180,7 +180,7 @@ Setiap task yang dibuat Diva untuk Bagus di Hermes Kanban WAJIB memiliki kompone
 
 ---
 
-## 🔄 4. Status Alur Kerja Task Kanban
+## 🔄 4. Status Alur Kerja Task Kanban & Siklus Estafet Otonom (Autonomous Relay Loop)
 Setiap task harus bergerak melalui status yang jelas:
 ```text
 BACKLOG ──► READY ──► IN_PROGRESS ──► REVIEW ──► APPROVED ──► DONE
@@ -189,10 +189,23 @@ BACKLOG ──► READY ──► IN_PROGRESS ──► REVIEW ──► APPROVE
                                 CHANGES_REQUESTED
                                   (kembali ke IN_PROGRESS)
 ```
-- **REVIEW**: Diva meninjau kode dan hasil testing Bagus.
-- **CHANGES_REQUESTED**: Diva mengembalikan task ke Bagus jika ada kriteria yang melanggar SOP atau belum lolos uji.
-- **APPROVED**: Mas Dicky memberikan persetujuan final setelah review Diva lolos.
-- **DONE**: Task selesai dan di-merge ke branch utama oleh Mas Dicky.
+- **REVIEW**: Diva meninjau kode, bukti testing, dan kepatuhan terhadap PRD.
+- **CHANGES_REQUESTED**: Diva mengembalikan instruksi revisi terarah ke Bagus jika ada kriteria yang melanggar SOP atau belum lolos uji.
+- **APPROVED**: Status validasi teknis lolos dari Diva.
+- **DONE**: Task diselesaikan dan siap digabung ke branch utama oleh Mas Dicky.
+
+### Alur Eksekusi Multi-Task Otonom (Autonomous Pipeline Loop):
+Untuk proyek bertahap (seperti 6 task EduNotify):
+1. **Diva Mengelola Estafet Task**: Diva bertindak sebagai orkestrator pipeline.
+2. **Review & Auto-Dispatch**:
+   - Jika Task $N$ selesai dan diajukan Bagus via `kanban_request_review`, Diva langsung mengaudit hasil kode di branch fitur.
+   - **Jika Gagal**: Diva mengirim feedback revisi (`CHANGES_REQUESTED`) ke Bagus.
+   - **Jika Lolos**: Diva menyetujui Task $N$ (`APPROVED`/`DONE`), lalu **secara otomatis membuat dan mengirim Task $N+1$ ke Kanban** untuk dikerjakan Bagus tanpa perlu menunggu Mas Dicky menjadi kurir pesan.
+3. **Penyampaian Laporan Akhir**:
+   - Siklus estafet berlanjut otomatis sampai seluruh task (Task 1 s/d 6) selesai dikerjakan dan divalidasi.
+   - Begitu seluruh rangkaian task tuntas, Diva menyusun laporan komprehensif kepada Mas Dicky untuk review final dan persetujuan merge ke `main`.
+4. **Pencegahan Kegagalan (Circuit Breaker)**:
+   - Jika Bagus mengalami error kritis atau gagal memenuhi kriteria sebanyak 2 kali berturut-turut pada task yang sama, loop otomatis dihentikan dan Diva langsung melapor kepada Mas Dicky untuk arahan lanjutan.
 
 ---
 
