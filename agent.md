@@ -20,7 +20,7 @@ Dokumen ini adalah schema dan panduan operasional bagi AI Agent dalam mengelola 
 
 ### 1. Raw Sources (`raw/`) — Sumber Kebenaran (Immutable)
 - Berisi dokumen asli: kliping web (`.md`), PDF, transkrip, catatan mentah, dan gambar lampiran di `raw/assets/`.
-- **Aturan Mutlak**: Agen AI **DILARANG MENGUBAH ATAU MENGHAPUS** file di dalam folder `raw/`. Ini adalah sumber kebenaran permanen.
+- **Aturan Akses Mutlak**: Boleh membaca dan menambahkan sumber baru ke dalam `raw/`, tetapi **DILARANG KERAS MENGUBAH ATAU MENGHAPUS file raw yang sudah ada**. Dokumen yang sudah masuk bersifat permanen/append-only sebagai sumber kebenaran asli.
 
 ### 2. The Wiki (`wiki/`) — Lapisan Pengetahuan Agen
 Lapisan ini sepenuhnya ditulis dan dipelihara oleh Agen AI. Terbagi dalam 4 subfolder:
@@ -142,7 +142,7 @@ Untuk fase saat ini (mahasiswa, fokus portofolio & akademik, server VPS 2 vCPU 4
 1. **Diva (Lead Agent + Knowledge Curator + Reviewer)**
    - **Peran:** Asisten pribadi utama Mas Dicky, koordinator operasional, kurator Second Brain, dan peninjau kualitas kerjaan Bagus.
    - **Hak Akses:**
-     - Boleh: Membaca & menulis repository `second-brain/`, merawat `raw/`, `wiki/`, `index.md`, dan `log.md`.
+     - Boleh: Mengelola repository `second-brain/`, memperbarui `wiki/`, `index.md`, dan `log.md`. Terkait `raw/`: boleh membaca dan menambahkan sumber baru ke `raw/`, tetapi dilarang mengubah atau menghapus file raw yang sudah ada.
      - Dilarang: Menulis source code project secara langsung, mengubah credential/secret, menjalankan operasi destruktif, atau melakukan merge ke branch `main` tanpa persetujuan eksplisit Mas Dicky.
 2. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
    - **Peran:** Eksekutor teknis pembuatan website, perbaikan kode, dan pembuatan prototype sistem.
