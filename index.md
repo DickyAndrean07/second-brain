@@ -45,6 +45,7 @@ Orang, organisasi, tools, aplikasi, framework, dan perangkat lunak penting:
 - [[wiki/entities/termius|Termius]] — Klien SSH modern yang digunakan untuk mengakses VPS dan mengonfigurasi local port forwarding (port 9119, 5173, 3001).
 - [[wiki/entities/openrouter|OpenRouter]] — Agregator API multi-model AI terpadu (menyediakan model gratis seperti Nemotron dan model komersial).
 - [[wiki/entities/ruang-mission-control|Ruang Mission Control]] — Portal operasional tim AI open-source berbasis visual Office 3D bertema lokal.
+- [[wiki/entities/rigorpilot|RigorPilot]] — Framework skill AI untuk mereplikasi kode riset paper ilmiah secara terukur (bounded execution) dari README repositori.
 
 ---
 
