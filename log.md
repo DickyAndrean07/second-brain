@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-22] ingest | RigorPilot & repo-intake-and-plan (Research Reproduction Tool)
+- **Target Files**: [[wiki/entities/rigorpilot.md]], [[index.md]]
+- **Highlights**: Mengarsipkan framework RigorPilot sebagai referensi riset skripsi AI. RigorPilot berguna untuk mereplikasi kode penelitian/paper ilmiah secara terukur (bounded execution) dengan mengaudit README repositori target terlebih dahulu sebelum dieksekusi.
+
 ## [2026-10-22] refactor | Penambahan Aturan Emas Tata Kelola AI Team (Diva & Bagus)
 - **Target Files**: [[AGENTS.md]], [[agent.md]]
 - **Highlights**: Mengintegrasikan Bagian II Tata Kelola AI Team: arsitektur 2-agent (Diva & Bagus), 4 sumber kebenaran (Second Brain, Repo Proyek, Kanban, memory.md), penegasan akses raw/ (boleh membaca & menambah sumber baru, dilarang mengubah/menghapus file raw yang ada), format wajib task Kanban, alur status (Review & Changes Requested), standar testing pragmatis, standar laporan hasil Bagus, SOP onboarding agen baru, dan pemisahan 4 repositori kerja.
