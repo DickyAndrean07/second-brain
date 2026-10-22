@@ -2,12 +2,18 @@
 type: project-spec
 title: "Product Requirements Document (PRD) — EduNotify MVP"
 project: "EduNotify"
-version: "1.0.0"
+version: "1.1.0"
 status: "APPROVED_FOR_SPEC"
 created: 2026-10-22
 updated: 2026-10-22
 author: "Diva (Product & System Analyst)"
 target_builder: "Bagus (Builder Agent)"
+tech_stack:
+  framework: "Next.js (App Router, Fullstack Single Codebase)"
+  language: "TypeScript"
+  styling: "Tailwind CSS"
+  database: "PostgreSQL"
+  orm: "Drizzle ORM"
 tags:
   - project/edunotify
   - spec/prd
@@ -15,7 +21,7 @@ tags:
   - architecture/multitenant
 ---
 
-# 📘 Product Requirements Document (PRD) — EduNotify MVP
+# 📘 Product Requirements Document (PRD) — EduNotify MVP (v1.1.0)
 
 ---
 
@@ -148,17 +154,26 @@ tags:
          └──► Hitung Metrik EWS ──► Deteksi Anomali ──► Generate Rekomendasi AI
 ```
 
-### 4.2 Aturan Validasi Otorisasi Estafet
-1. **Otorisasi Jam Pelajaran**:
-   - Guru $G$ berhak mengisi presensi kelas $K$ pada tanggal $T$ jika dan hanya jika $G$ terdaftar sebagai pengampu mata pelajaran di kelas $K$ pada hari tersebut.
-   - Guru urutan jam lebih awal diprioritaskan. Jika jam ke-1 belum menyimpan data, jam ke-2 otomatis berhak mengisi saat jam pelajarannya dimulai atau berlangsung.
-   - Begitu data presensi resmi kelas $K$ tanggal $T$ berhasil disimpan (`status = SUBMITTED`), guru jam berikutnya **hanya dapat membaca** dan tidak dapat menimpa presensi kecuali melalui mekanisme koreksi.
+### 4.2 Aturan Validasi Otorisasi Estafet (Backend Verification)
+Unique constraint pada database saja TIDAK CUKUP. Backend wajib memvalidasi jadwal KBM, jendela waktu, dan otorisasi guru sebelum query simpan dieksekusi:
+
+1. **Validasi Otorisasi & Jadwal di Backend**:
+   - Backend memverifikasi: Apakah tanggal $T$ adalah hari sekolah aktif di `academic_calendars`? Jika libur, tolak request.
+   - Backend memverifikasi: Apakah guru $G$ terdaftar di `teaching_schedules` untuk kelas $K$ pada hari tersebut?
+   - Backend memeriksa urutan jam pelajaran (*period order*):
+     - Guru jam ke-1 berhak mengisi sejak jam KBM dimulai.
+     - Guru jam ke-2 ($P_2$) berhak mengisi jika dan hanya jika sesi jam ke-1 ($P_1$) belum tersimpan (`SUBMITTED`) dan waktu saat ini telah memasuki jam pelajaran ke-2.
+     - Prinsip berlanjut ke jam berikutnya: otorisasi estafet berpindah hanya jika seluruh jam pengampu sebelumnya belum melakukan submit.
+   - Jika guru yang tidak mengajar di kelas tersebut mencoba memanggil endpoint presensi (meskipun memalsukan payload client), backend wajib menolak dengan HTTP `403 Forbidden: Anda tidak memiliki jadwal mengajar di kelas ini hari ini`.
+
 2. **Penanganan Konkurensi & Double-Submit**:
    - Endpoint penyimpanan presensi wajib menerapkan *idempotency key* dan *database unique constraint* pada kombinasi `(school_id, class_id, date)`.
-   - Menggunakan mekanisme *optimistic locking* atau *atomic conditional write*: jika status presensi sudah berubah menjadi `SUBMITTED`, transaksi kedua wajib ditolak dengan pesan: *"Presensi untuk kelas ini baru saja disimpan oleh [Nama Guru]."*.
-3. **Pengisian Terlambat (Late Filing)**:
-   - Jika hingga jam pelajaran terakhir selesai presensi belum terisi, sesi presensi ditandai `UNCOMPLETED_ALERT`.
-   - Pengisian setelah jam sekolah berakhir pada Hari H tetap diizinkan oleh Wali Kelas atau salah satu Guru Pengampu hari itu, dengan tanda `is_late_submission = true` di audit log.
+   - Backend menggunakan transaksi dengan *atomic conditional write* atau *row-level locking*: jika status presensi sudah berubah menjadi `SUBMITTED`, transaksi kedua ditolak dengan pesan: *"Presensi untuk kelas ini baru saja disimpan oleh [Nama Guru]."*.
+
+3. **Pengisian Terlambat (Late Filing) & Eskalasi Jam**:
+   - **Pukul 12.00 Waktu Sekolah**: Bertindak sebagai *warning trigger* (bukan penguncian). Sistem memunculkan banner peringatan di dashboard Wali Kelas dan Admin untuk kelas yang belum diabsen.
+   - **Akhir Jam KBM**: Begitu seluruh jadwal KBM hari tersebut usai dan presensi belum berstatus `SUBMITTED`, status sesi otomatis ditandai `UNCOMPLETED_ALERT`.
+   - **Pengisian Terlambat**: Wali Kelas atau salah satu Guru Pengampu hari tersebut tetap dapat melakukan pengisian susulan pada Hari H, dengan sistem menandai `is_late_submission = true` di audit log.
 
 ### 4.3 Matriks Koreksi Presensi
 
@@ -196,7 +211,7 @@ Salam,
 Wali Kelas {kelas}
 ```
 
-### 5.3 State Tracking Intervensi
+### 5.3 State Tracking Intervensi & Batas Verifikasi Pengiriman
 
 ```
 [Belum Dibuka] ──(Wali Kelas Klik Tombol WA)──► [WhatsApp Dibuka] 
@@ -210,7 +225,9 @@ Wali Kelas {kelas}
 - **`WhatsApp Dibuka`**: Otomatis berubah saat link `wa.me` di-klik (dicatat via endpoint internal sebelum *redirect* atau event listener frontend).
 - **`Ditandai Sudah Dihubungi`**: Tombol ceklis manual yang ditekan wali kelas setelah mengirim pesan secara nyata di aplikasi WhatsApp miliknya.
 
-*Catatan Kritis*: UI harus secara eksplisit menampilkan teks bantuan: *"Menekan tombol WA membuka WhatsApp di perangkat Anda. Tandai 'Sudah Dihubungi' setelah Anda selesai mengirim pesan."* Sistem tidak boleh mengklaim pesan terkirim secara otomatis.
+> [!warning] Batas Verifikasi WhatsApp (Bukan Bukti Pengiriman)
+> Menekan tombol WhatsApp atau status `WhatsApp Dibuka` **SAMA SEKALI BUKAN BUKTI** bahwa pesan telah terkirim atau diterima oleh orang tua. Aksi tersebut hanya mencatat bahwa pengguna telah memicu navigasi ke URL `wa.me`. 
+> Sistem dan antarmuka dilarang menampilkan teks misleading seperti *"Pesan Terkirim"* atau *"Pesan Diterima"*. Status yang diizinkan hanya: `Belum Dibuka`, `WhatsApp Dibuka`, dan `Ditandai Sudah Dihubungi (Manual)`.
 
 ### 5.4 Penanganan Multi-Siswa Satu Nomor
 - Jika dua siswa atau lebih (kakak-beradik) memiliki `guardian_phone` yang sama, sistem menampilkan kartu tindak lanjut terpisah untuk masing-masing siswa.
@@ -236,21 +253,34 @@ Konfigurasi runtime dikontrol via `.env`:
 - `AI_API_KEY`: Kredensial rahasia (disimpan aman di `.env`)
 - `AI_MODEL_NAME`: Identifier model (contoh: `9router`, `gpt-4o-mini`, `qwen2.5:7b`)
 
-### 6.2 Sanitasi & Privasi Data (Pseudonymization Guardrail)
-Sebelum payload dikirimkan ke model LLM, data siswa wajib disanitasi:
-- **Dilarang Dikirim**: NIS, NISN, Nama Lengkap Asli, Alamat Rumah, Nomor Telepon, Nama Orang Tua.
-- **Diperbolehkan Dikirim**: ID Samaran (misal: `Siswa_A1`, `Siswa_B4`), Gender, Riwayat Kehadiran (array status per tanggal), Persentase Kehadiran, Hari Kejadian.
-- Setelah LLM menghasilkan respons narasi, backend memetakan kembali ID Samaran ke Nama Siswa di sisi presentasi dashboard untuk dibaca oleh Wali Kelas/Guru.
+### 6.2 Minimisasi Data & Privasi Tingkat Tinggi (Data Minimization & Log Scrubbing)
+Pseudonimisasi ID saja tidak otomatis menjamin anonimitas bila terdapat kebocoran *quasi-identifiers* (misal: kombinasi nama kelas unik + catatan presensi spesifik). Sistem wajib menerapkan prinsip minimisasi data:
 
-### 6.3 Rule Engine Deterministik (Early Warning System)
-Indikator peringatan dini dihitung secara matematis oleh backend tanpa melibatkan LLM:
+1. **Pemangkasan Payload Sebelum ke LLM**:
+   - **Dilarang Mutlak**: NIS, NISN, Nama Lengkap Asli, Nama Orang Tua, Nomor Telepon, Alamat Rumah, Catatan Teks Bebas (*freeform notes* seperti "ijin menghadiri pemakaman kakek").
+   - **Data yang Diberikan**: ID Samaran teracak per sesi analitik (`Siswa_1`, `Siswa_2`), Gender, Rekap Numerik Kehadiran (Jumlah Sakit, Izin, Alpa), Kode Indikator EWS yang Terpicu, dan Hari Kejadian.
+   - Pemetaan balik (*re-identification*) nama siswa dilakukan 100% di sisi frontend/server lokal sekolah saat merender view, tidak pernah dikirim ke LLM.
 
-| Kode Indikator | Kriteria Pemicu (Deterministik) | Tingkat Urgensi | Tindakan yang Disarankan |
-|---|---|:---:|---|
-| `EWS_ALPA_STREAK` | Alpa $\ge$ 2 hari berturut-turut | **TINGGI** | Hubungi ortu hari ini; jadwalkan konfirmasi langsung. |
-| `EWS_ALPA_MONTHLY` | Alpa akumulasi $\ge$ 3 hari dalam 30 hari kalender | **SEDANG** | Diskusi empat mata dengan siswa; catat kendala. |
-| `EWS_DAY_PATTERN` | $\ge 70\%$ ketidakhadiran jatuh pada hari yang sama (misal: setiap Senin/Jumat) | **SEDANG** | Investigasi kendala spesifik hari tersebut bersama BK. |
-| `EWS_TREND_DROP` | Persentase kehadiran turun $\ge 15\%$ dibandingkan bulan sebelumnya | **TINGGI** | Rapat koordinasi wali kelas dan guru BK. |
+2. **Pencegahan Kebocoran di Log Sistem (Log Redaction)**:
+   - Seluruh payload request dan response AI dilarang disimpan ke dalam server error log, console log, atau audit log tanpa sanitasi.
+   - Kredensial provider AI (`AI_API_KEY`) wajib di-mask dan tidak boleh muncul pada error stack trace.
+
+### 6.3 Rule Engine Deterministik (Early Warning System) & Baseline Konfigurasi
+Indikator peringatan dini dihitung secara matematis oleh backend tanpa melibatkan LLM. Ambang batas di bawah ini adalah **konfigurasi baseline awal** yang dapat disesuaikan (*tunable*) oleh Admin Sekolah, bukan dogma universal:
+
+#### Syarat Minimum Data Historis (Cold-Start Protection)
+Untuk mencegah *false positives* atau alarm palsu yang menyesatkan (misal: baru minggu pertama sekolah ada siswa sakit 1 hari langsung dicap anomali):
+- **Syarat Minimum**: Siswa wajib memiliki riwayat presensi minimal **14 hari sekolah aktif** sebelum kalkulasi tren penurunan (`EWS_TREND_DROP`) atau pola hari (`EWS_DAY_PATTERN`) diaktifkan.
+- Jika data historis belum mencukupi 14 hari aktif, sistem hanya menampilkan status faktual dan menahan alert prediktif dengan keterangan: *"Data historis belum mencukupi untuk analisis pola kehadiran (minimal 14 hari aktif)"*.
+
+#### Matriks Baseline Pemicu EWS (Dapat Dikonfigurasi)
+
+| Kode Indikator | Baseline Pemicu Default | Syarat Min. Data | Tingkat Urgensi | Tindakan yang Disarankan |
+|---|---|:---:|:---:|---|
+| `EWS_ALPA_STREAK` | Alpa $\ge$ 2 hari berturut-turut | 2 Hari Aktif | **TINGGI** | Hubungi ortu hari ini; jadwalkan konfirmasi langsung. |
+| `EWS_ALPA_MONTHLY` | Alpa akumulasi $\ge$ 3 hari dalam 30 hari kalender | 14 Hari Aktif | **SEDANG** | Diskusi empat mata dengan siswa; catat kendala. |
+| `EWS_DAY_PATTERN` | $\ge 70\%$ ketidakhadiran jatuh pada hari yang sama (misal: selalu Senin/Jumat) | 21 Hari Aktif | **SEDANG** | Investigasi kendala spesifik hari tersebut bersama BK. |
+| `EWS_TREND_DROP` | Persentase kehadiran turun $\ge 15\%$ dibandingkan periode sebelumnya | 28 Hari Aktif | **TINGGI** | Rapat koordinasi wali kelas dan guru BK. |
 
 ### 6.4 AI Recommendation & Narrative Engine
 - **Input ke LLM**: Tabel statistik terverifikasi + kode indikator EWS aktif + rekap tren kelas.
