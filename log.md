@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-22] spec | Inisiasi Proyek EduNotify & Penyusunan PRD MVP
+- **Target Files**: [[wiki/projects/edunotify-prd.md]], [[index.md]]
+- **Highlights**: Menyusun Product Requirements Document (PRD) versi 1.0.0 untuk EduNotify. Mencakup alur presensi estafet harian berbasis jadwal KBM, integrasi WhatsApp Click-to-Chat manual, matriks hak akses RBAC, hirarki koreksi presensi H s/d H-3, Early Warning System deterministik, arsitektur AI provider-agnostic terpseudonimkan, dan skema multitenancy `school_id`.
+
 ## [2026-10-22] ingest | RigorPilot & repo-intake-and-plan (Research Reproduction Tool)
 - **Target Files**: [[wiki/entities/rigorpilot.md]], [[index.md]]
 - **Highlights**: Mengarsipkan framework RigorPilot sebagai referensi riset skripsi AI. RigorPilot berguna untuk mereplikasi kode penelitian/paper ilmiah secara terukur (bounded execution) dengan mengaudit README repositori target terlebih dahulu sebelum dieksekusi.
