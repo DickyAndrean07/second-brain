@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-23] release | Merge Landing Page Scrollytelling & HyperFrames Showcase (EDUNOTIFY-08) ke Main
+- **Target Files**: `edunotify` (branch `main`)
+- **Highlights**: Melakukan merge branch `bagus/edunotify-08-landing-hyperframes` (commit `fb6eae2` & `970243a`) ke branch `main` repositori `edunotify` dan melakukan push ke remote GitHub. Membawa landing page modern dengan Hero Section berlatar sunrise campus, interactive Scrollytelling 3 langkah berbasis 5 aset visual, serta video produk HyperFrames 12 detik 1080p (`public/videos/edunotify-showcase.mp4`).
+
 ## [2026-10-23] release | Merge Redesain UI EduNotify (EDUNOTIFY-07) ke Main
 - **Target Files**: `edunotify` (branch `main`)
 - **Highlights**: Melakukan fast-forward merge branch `bagus/edunotify-07-ui-redesign-reference` (commit `8a6e957`) ke branch `main` repositori `edunotify` dan melakukan push ke remote GitHub. Membawa Logo 03 Insight, sistem Light/Dark mode, komponen desktop glassmorphism, dan mobile responsive webapp 3 layar.
