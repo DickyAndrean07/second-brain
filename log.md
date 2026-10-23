@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-23] refactor | Penambahan SOP Mockup-First Policy untuk Pengembangan UI
+- **Target Files**: [[AGENTS.md]], [[agent.md]]
+- **Highlights**: Menambahkan Pasal 5 di Bagian II: Mewajibkan alur Mockup-First (file HTML statis terisolasi) sebelum koding komponen dinamis Next.js/React. Mas Dicky meninjau visual di browser laptop (warna, tipografi anti-slop, dan estetika); koding komponen aplikasi baru boleh dimulai setelah mockup disetujui Owner.
+
 ## [2026-10-23] release | Merge Landing Page Scrollytelling & HyperFrames Showcase (EDUNOTIFY-08) ke Main
 - **Target Files**: `edunotify` (branch `main`)
 - **Highlights**: Melakukan merge branch `bagus/edunotify-08-landing-hyperframes` (commit `fb6eae2` & `970243a`) ke branch `main` repositori `edunotify` dan melakukan push ke remote GitHub. Membawa landing page modern dengan Hero Section berlatar sunrise campus, interactive Scrollytelling 3 langkah berbasis 5 aset visual, serta video produk HyperFrames 12 detik 1080p (`public/videos/edunotify-showcase.mp4`).

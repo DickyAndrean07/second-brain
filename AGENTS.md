@@ -209,7 +209,20 @@ Untuk proyek bertahap (seperti 6 task EduNotify):
 
 ---
 
-## 🧪 5. Pendekatan Testing Pragmatis
+## 🎨 5. Alur Kerja Desain UI: Mockup-First Policy (Anti-Revisi Besar)
+Untuk setiap pembuatan komponen antarmuka baru, halaman landing page, atau perombakan visual besar:
+1. **Mockup HTML Statis Dahulu**: Sebelum menulis komponen Next.js/React dinamis yang rumit, Bagus wajib menyusun 1 file preview mockup visual mandiri (file HTML/CSS statis terisolasi, contoh: `docs/design-mockup.html`).
+2. **Review Visual oleh Owner**: Mas Dicky membuka file mockup tersebut langsung di browser laptop untuk meninjau:
+   - Keselarasan warna dan kontras (Dark/Light mode).
+   - Kerapian tata letak, proporsi kartu, dan hierarki tipografi (anti-slop).
+   - Kualitas aset visual (dilarang menggunakan gambar AI kartun/cacat pada UI produk).
+3. **Persetujuan (Design Gate)**:
+   - Jika visual ditolak/butuh koreksi: Bagus merevisi file mockup statis tersebut terlebih dahulu (cepat dan hemat waktu).
+   - Jika disetujui Mas Dicky: Bagus baru diperbolehkan mengonversi mockup tersebut menjadi komponen React/Tailwind dinamis dan mengintegrasikannya ke proyek utama.
+
+---
+
+## 🧪 6. Pendekatan Testing Pragmatis
 Bagus tidak diwajibkan menggunakan TDD (Test-Driven Development) penuh untuk semua pekerjaan. Gunakan pendekatan sesuai jenis proyek:
 - **Backend / Logika Bisnis / API**: Wajib **Unit Test** otomatis.
 - **UI / Frontend / Halaman Visual**: Wajib **Browser & Visual Check** (responsivitas, layout, navigasi).
@@ -217,7 +230,7 @@ Bagus tidak diwajibkan menggunakan TDD (Test-Driven Development) penuh untuk sem
 
 ---
 
-## 📊 6. Standar Laporan Hasil Kerja Bagus
+## 📊 7. Standar Laporan Hasil Kerja Bagus
 Setiap kali Bagus meminta review (`kanban_request_review`), laporannya WAJIB menyertakan:
 1. **Ringkasan Perubahan**: Apa saja yang telah dibuat/diperbaiki.
 2. **File yang Diubah**: Daftar file yang ditambah, diedit, atau dihapus.
@@ -229,7 +242,7 @@ Setiap kali Bagus meminta review (`kanban_request_review`), laporannya WAJIB men
 
 ---
 
-## 🛡️ 7. SOP Onboarding Agen Baru
+## 🛡️ 8. SOP Onboarding Agen Baru
 Jika di masa depan tim membutuhkan agen baru, ikuti prosedur ketat berikut:
 1. **Kebutuhan Baru Muncul**: Muncul kebutuhan spesifik yang tidak dapat ditangani Diva atau Bagus.
 2. **Analisis Kebutuhan**: Diva menganalisis apakah benar-benar butuh agen baru atau cukup skill tambahan.
@@ -244,7 +257,7 @@ Jika di masa depan tim membutuhkan agen baru, ikuti prosedur ketat berikut:
 
 ---
 
-## 📦 8. Pemisahan Repositori Kerja
+## 📦 9. Pemisahan Repositori Kerja
 Pekerjaan dipisahkan dalam 4 repositori independen:
 1. **`second-brain/`**: Pusat dokumentasi, wiki pengetahuan, dan SOP tim (dikelola Diva).
 2. **`portfolio-website/`**: Website portofolio pribadi Mas Dicky untuk melamar magang (dikerjakan Bagus).
