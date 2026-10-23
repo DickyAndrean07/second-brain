@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-23] release | Merge Redesain UI EduNotify (EDUNOTIFY-07) ke Main
+- **Target Files**: `edunotify` (branch `main`)
+- **Highlights**: Melakukan fast-forward merge branch `bagus/edunotify-07-ui-redesign-reference` (commit `8a6e957`) ke branch `main` repositori `edunotify` dan melakukan push ke remote GitHub. Membawa Logo 03 Insight, sistem Light/Dark mode, komponen desktop glassmorphism, dan mobile responsive webapp 3 layar.
+
 ## [2026-10-23] spec | Dokumentasi EduNotify Design System & UI Reference
 - **Target Files**: [[wiki/projects/edunotify-design-system.md]], [[index.md]]
 - **Highlights**: Menyusun dokumentasi spesifikasi desain antarmuka EduNotify berdasarkan referensi visual pengguna (edunotify-design-reference-desktop-mobile.html): monogram logo 03 Insight, palet warna brand/cyan/mint, tema Light & Dark, serta rancangan responsif mobile 3 layar kunci (Dashboard, Alpa WA intervention, AI Insight).
