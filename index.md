@@ -54,6 +54,7 @@ Spesifikasi produk, arsitektur teknis, dan PRD proyek yang dibangun:
 
 - [[wiki/projects/edunotify-prd|Product Requirements Document (PRD) — EduNotify MVP]] — Dokumen kebutuhan produk lengkap sistem absensi sekolah estafet berbasis jadwal, integrasi WhatsApp Click-to-Chat manual, Early Warning System deterministik, dan analitik AI provider-agnostic.
 - [[wiki/projects/edunotify-tasks|Paket Task Implementasi EduNotify MVP (Handoff Bagus)]] — Spesifikasi 6 task Kanban resmi implementasi EduNotify untuk Bagus mencakup kriteria DoD, dependensi, dan batasan keamanan.
+- [[wiki/projects/edunotify-design-system|EduNotify Design System — Desktop & Mobile Webapp]] — Acuan visual resmi redesain UI EduNotify (desktop Light/Dark & mobile responsive) berdasarkan referensi edunotify-design-reference-desktop-mobile.html (Logo 03 Insight).
 
 ---
 

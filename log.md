@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-10-23] spec | Dokumentasi EduNotify Design System & UI Reference
+- **Target Files**: [[wiki/projects/edunotify-design-system.md]], [[index.md]]
+- **Highlights**: Menyusun dokumentasi spesifikasi desain antarmuka EduNotify berdasarkan referensi visual pengguna (edunotify-design-reference-desktop-mobile.html): monogram logo 03 Insight, palet warna brand/cyan/mint, tema Light & Dark, serta rancangan responsif mobile 3 layar kunci (Dashboard, Alpa WA intervention, AI Insight).
+
 ## [2026-10-22] refactor | Formalisasi Siklus Estafet Otonom (Autonomous Pipeline Loop)
 - **Target Files**: [[AGENTS.md]], [[agent.md]]
 - **Highlights**: Menambahkan klausul operasional di Bagian II Pasal 4: Diva mengelola estafet task secara otonom (Task N selesai ➔ Diva review ➔ jika revisi kirim feedback, jika lolos auto-dispatch Task N+1 ke Kanban), siklus berlanjut hingga semua task tuntas sebelum laporan final ke Mas Dicky, dengan proteksi Circuit Breaker (maksimal 2x gagal berturut-turut langsung eskalasi ke Owner).
