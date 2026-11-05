@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-05] plan | Usulan Proyek AI Automation Magang (Diskominfo Gresik vs PT GCS)
+- **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]], [[index.md]]
+- **Highlights**: Menyusun dokumen referensi komparatif 8 usulan sistem AI Automation & Web Development untuk persiapan magang/tugas khusus Mas Dicky. Diskominfo: AI Subdomain Guard (deteksi cloaking judol live/deface via multimodal vision), AI triage aduan warga, AI WA assistant PPID, dan AI validator Satu Data. PT GCS: AI parser dokumen DO/surat jalan fisik (OCR + vision LLM), AI WA agent tracking stok/logistik, AI deteksi anomali slip timbangan truk, dan AI customer support dispatcher.
+
 ## [2026-10-23] refactor | Penambahan SOP Mockup-First Policy untuk Pengembangan UI
 - **Target Files**: [[AGENTS.md]], [[agent.md]]
 - **Highlights**: Menambahkan Pasal 5 di Bagian II: Mewajibkan alur Mockup-First (file HTML statis terisolasi) sebelum koding komponen dinamis Next.js/React. Mas Dicky meninjau visual di browser laptop (warna, tipografi anti-slop, dan estetika); koding komponen aplikasi baru boleh dimulai setelah mockup disetujui Owner.
