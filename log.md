@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-06] spec | Visual Engine — Milestone 2B & 2C Implementation & Verification
+- **Target Files**: [[wiki/projects/visual-engine.md]], [[index.md]]
+- **Highlights**: Dokumentasi arsitektur sistem inspeksi browser Visual Engine (`D:\projects\visual-engine`). Milestone 2B (eksperimen scroll terencana: forward, reverse, dwell/pause, repeatability, sampling per-frame rAF) dan Milestone 2C (mesin klasifikasi animasi rule-based 9 kategori, confidence scoring, pemisahan observed/inferred/verified) berhasil diimplementasikan dan lulus pengujian lokal 14/14 test di Windows.
+
 ## [2026-11-05] plan | Usulan Proyek AI Automation Magang (Diskominfo Gresik vs PT GCS)
 - **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]], [[index.md]]
 - **Highlights**: Menyusun dokumen referensi komparatif 8 usulan sistem AI Automation & Web Development untuk persiapan magang/tugas khusus Mas Dicky. Diskominfo: AI Subdomain Guard (deteksi cloaking judol live/deface via multimodal vision), AI triage aduan warga, AI WA assistant PPID, dan AI validator Satu Data. PT GCS: AI parser dokumen DO/surat jalan fisik (OCR + vision LLM), AI WA agent tracking stok/logistik, AI deteksi anomali slip timbangan truk, dan AI customer support dispatcher.
