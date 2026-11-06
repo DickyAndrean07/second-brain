@@ -61,18 +61,29 @@ Dirancang sebagai fondasi modular untuk jangka panjang:
 - Evaluator confidence (`high`, `medium`, `low`, `insufficient`) berbasis kelengkapan bukti dan konsistensi multi-run.
 - Generator spesifikasi animasi terstruktur dan laporan naratif Markdown (`animation-intelligence-report.md`).
 
+### Milestone 2D — Measurement Accuracy, Interaction Intelligence & Engine Hardening (Selesai)
+- **Nested Scroll Support**: Opsi `--scroll-target` untuk container terisolasi, mengukur `scrollTop` aktual dan geometri relatif.
+- **Trajectory Measurement**: Pelacakan kurva scroll instan, smooth, reverse, dan interrupted.
+- **Interaction Intelligence**: Recorder transisi `hover`, `leave`, dan `click` pada loopback fixtures.
+- **Ground Truth Validation (278 sampel)**:
+  - Max Opacity Error: $3.33 \times 10^{-7}$ (toleransi 0.05).
+  - Max Geometry/Transform Error: $0\text{ px}$ (toleransi 2–3 px).
+  - Missing Samples: 0.
+- **Multilabel Evaluation (11 elemen)**: 16 True Positives, 0 False Positives, 0 False Negatives (100% precision & recall pada controlled fixture set).
+- **Status Akhir**: **CONDITIONAL GO** untuk eksperimen rekonstruksi frontend lokal (Milestone 3).
+
 ---
 
 ## 🧪 Hasil Pengujian & Verifikasi Terkini
 - **Typecheck**: `npm run typecheck` (Lulus, 0 error).
 - **Build**: `npm run build` (Lulus, 0 error).
 - **Automated Tests**: 14/14 lulus (0 gagal, 0 dilewati).
-- **Integritas Skema**: Validasi terhadap `experiment.schema.json` 100% konsisten.
+- **Integritas Skema**: Validasi terhadap `experiment.schema.json` (JSON Schema 2.1.0) 100% konsisten.
+- **Laporan & Evidence**: `measurement-quality.json`, `classification-evaluation.json`, dan `docs/verification-2d.md`.
 
 ---
 
 ## 📌 Batasan Saat Ini & Rekomendasi Selanjutnya
-1. **Nested Scrollers**: Kontainer scroll bertingkat (*nested containers*) ditolak secara eksplisit demi integritas data; saat ini fokus pada root viewport/document scroll.
-2. **Smooth Scroll & Micro-interactions**: Fixture transisi hover dan peredam smooth scroll memerlukan metrik perilaku independen lebih lanjut.
-3. **Target Eksternal**: Benchmark eksternal diperlakukan sebagai observasi pelengkap; validasi perilaku inti tetap berakar pada fixture lokal deterministik.
-4. **Langkah Berikut**: Memperkuat asersi numerik independen pada fixture sebelum beralih ke tahap *Website Replication Engine* atau *Animation Learning Library*.
+1. **Validasi Fixture vs Web Arbitrer**: Akurasi sempurna (0 px error, 0 FP/FN) berlaku pada fixture deterministik terkontrol; untuk web publik arbitrer tetap akan ada noise rendering.
+2. **Target Eksternal**: Grail tidak dicoba ulang setelah respons HTTP 402; tidak menghambat engine inti.
+3. **Langkah Berikut (Milestone 3)**: Memulai *Website Replication Engine* (tahap rekonstruksi kode CSS/GSAP) dengan target eksperimen fixture lokal mandiri terlebih dahulu sesuai rekomendasi CONDITIONAL GO.

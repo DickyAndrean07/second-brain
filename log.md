@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-06] spec | Visual Engine — Milestone 2D (Measurement Accuracy, Interaction Intelligence & Hardening)
+- **Target Files**: [[wiki/projects/visual-engine.md]], [[index.md]]
+- **Highlights**: Verifikasi Milestone 2D Visual Engine (`D:\projects\visual-engine`). Penambahan dukungan `--scroll-target` nested scroll container, trajectory measurement (smooth/reversed/interrupted), interaction recorder (`hover`/`click`), dan validasi numerik ground-truth (278 sampel: 0 px error geometri/transform, $3.33 \times 10^{-7}$ opacity error, 0 missing samples). Multilabel classifier 11 elemen: 16 TP, 0 FP, 0 FN. Evaluasi status CONDITIONAL GO untuk melangkah ke Milestone 3 (Local Reconstruction).
+
 ## [2026-11-06] spec | Visual Engine — Milestone 2B & 2C Implementation & Verification
 - **Target Files**: [[wiki/projects/visual-engine.md]], [[index.md]]
 - **Highlights**: Dokumentasi arsitektur sistem inspeksi browser Visual Engine (`D:\projects\visual-engine`). Milestone 2B (eksperimen scroll terencana: forward, reverse, dwell/pause, repeatability, sampling per-frame rAF) dan Milestone 2C (mesin klasifikasi animasi rule-based 9 kategori, confidence scoring, pemisahan observed/inferred/verified) berhasil diimplementasikan dan lulus pengujian lokal 14/14 test di Windows.
