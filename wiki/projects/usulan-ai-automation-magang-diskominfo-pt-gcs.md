@@ -42,15 +42,19 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
   - **Incident Report & Alert Dispatcher**: Bot Telegram CSIRT mengirimkan alert darurat otomatis disertai ringkasan analisis ancaman ketika anomali terdeteksi.
 - **Tech Stack**: Next.js (Dashboard Admin), Playwright/Puppeteer, PostgreSQL, Drizzle ORM, 9Router (Gemini Flash Vision), Telegram Bot API.
 
-### 2. AI Triage & Router Pengaduan Warga (Lapor GUS / SP4N LAPOR)
+### 2. AI Intake & Triage Assistant Lapor GUS — Service Desk Bridge (Human-in-the-Loop) ⭐ [Rekomendasi Utama Presentasi]
 - **Latar Belakang Masalah**:
-  - Aduan masyarakat masuk melalui berbagai kanal dengan bahasa santai, dialek lokal (Jawa/Gresikan), dan sering salah ditujukan ke OPD yang tidak berwenang.
-  - Staf dinas harus membaca dan mengarahkan tiket pengaduan secara manual satu per satu.
-- **Arsitektur & Fitur AI**:
-  - Ekstraksi entitas masalah, lokasi, dan sentimen dari narasi warga menggunakan LLM.
-  - Klasifikasi otomatis ke OPD terkait (misal: jalan rusak ke PUTR, keluhan bansos ke Dinsos).
-  - Penilaian tingkat urgensi otomatis (Normal / Butuh Perhatian Segera / Bahaya Keselamatan).
-- **Tech Stack**: Next.js, PostgreSQL, LLM Structured Output (JSON function calling), Webhook Service Desk.
+  - Portal `servicedesk.gresikkab.go.id` mewajibkan registrasi akun, verifikasi email, dan form panjang yang rumit bagi warga awam.
+  - Warga memilih chat WhatsApp (Lapor GUS / GoWA) dengan pesan tidak lengkap, bahasa santai/Jawa Gresikan, dan sering tertimbun di luar jam kerja (hanya greeting message otomatis).
+  - Admin Diskominfo harus membaca, mengonfirmasi kelengkapan data manual, dan mengetik ulang satu per satu ke web Service Desk.
+- **Arsitektur & Pendekatan Dua Fase**:
+  - **Fase 1 (Human-in-the-Loop / Presentasi Awal Tanpa Risiko)**:
+    - Chat WA warga dipandu interaktif oleh AI jika data belum lengkap (lokasi, foto, rincian).
+    - AI mengekstrak entitas penting (Nama, No WA, Lokasi, Kategori, Urgensi) dan menentukan rekomendasi dinas/OPD terkait.
+    - AI menyusun draf laporan terstruktur siap salin-tempel (*ready-to-copy*) untuk admin Diskominfo, menjaga kendali penuh admin dan keamanan sistem internal tanpa menyentuh source code atau database produksi.
+  - **Fase 2 (Otomasi API Lanjutan)**:
+    - Jika izin dan kredensial/API staging diberikan mentor, draf langsung ditembakkan via REST API / endpoint ke Service Desk.
+- **Tech Stack**: Node.js / Baileys (WA), 9Router (Gemini Flash / Structured Output JSON), PostgreSQL.
 
 ### 3. AI WhatsApp Assistant Pelayanan Terpadu & PPID (Agentic RAG)
 - **Latar Belakang Masalah**:
