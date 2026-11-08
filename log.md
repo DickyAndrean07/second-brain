@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-07] spec | Hermes Web Studio — Handover Context & Quality Gate Protocol
+- **Target Files**: [[wiki/projects/hermes-web-studio.md]], [[index.md]]
+- **Highlights**: Menyimpan konteks serah terima (handover) Hermes Web Studio (`D:\projects\visual-engine`). Mendefinisikan peran Diva sebagai Technical Architect & Quality Gate Reviewer untuk implementasi Codex Desktop, pembagian 4 fase (Phase 4A–4D), aturan pembekuan `engine/`, isolasi `studio/`, evaluasi kritis hasil M3B, serta 9 dimensi audit dan format baku laporan evaluasi gate (`PASS`, `CONDITIONAL PASS`, `FAIL`, `BLOCKED`).
+
 ## [2026-11-06] spec | Visual Engine — Milestone 2D (Measurement Accuracy, Interaction Intelligence & Hardening)
 - **Target Files**: [[wiki/projects/visual-engine.md]], [[index.md]]
 - **Highlights**: Verifikasi Milestone 2D Visual Engine (`D:\projects\visual-engine`). Penambahan dukungan `--scroll-target` nested scroll container, trajectory measurement (smooth/reversed/interrupted), interaction recorder (`hover`/`click`), dan validasi numerik ground-truth (278 sampel: 0 px error geometri/transform, $3.33 \times 10^{-7}$ opacity error, 0 missing samples). Multilabel classifier 11 elemen: 16 TP, 0 FP, 0 FN. Evaluasi status CONDITIONAL GO untuk melangkah ke Milestone 3 (Local Reconstruction).
