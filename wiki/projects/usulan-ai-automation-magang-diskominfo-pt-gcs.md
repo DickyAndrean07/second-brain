@@ -32,9 +32,16 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
 
 ### 1. AI Subdomain Guard & Visual Deface Inspector (Cybersecurity AI) ⭐ [Rekomendasi Utama]
 - **Latar Belakang Masalah**:
-  - Subdomain OPD Pemkab Gresik kerap menjadi sasaran empuk peretasan *Black Hat SEO* judi online karena memiliki otoritas domain (`.go.id`) tinggi.
-  - Peretas menggunakan teknik *conditional cloaking*: pengunjung manual melihat tampilan web normal, sedangkan Googlebot disuguhi halaman promosi slot/judi (terbukti live pada subdomain seperti `geodatabase.gresikkab.go.id` terinjeksi cloaking slot PONTI4D).
-  - Pengecekan manual terhadap puluhan subdomain memakan waktu dan sering luput dari pengawasan Tim CSIRT/Persandian.
+- Subdomain OPD Pemkab Gresik kerap menjadi sasaran empuk peretasan *Black Hat SEO* judi online karena memiliki otoritas domain (`.go.id`) tinggi.
+- Peretas menggunakan teknik *conditional cloaking*: pengunjung manual melihat tampilan web normal, sedangkan Googlebot disuguhi halaman promosi slot/judi.
+- Pengecekan manual terhadap puluhan subdomain memakan waktu dan sering luput dari pengawasan Tim CSIRT/Persandian.
+- **Bukti Empiris Lapangan (Live Findings)**:
+  1. `geodatabase.gresikkab.go.id` — Terinjeksi cloaking slot PONTI4D (meta title/desc dan link luar `geodata.pafigressikab.com` terbaca Googlebot).
+  2. `desadoudo.gresikkab.go.id/assets/import/excel` — Injeksi parameter URL spam slot & konten dewasa.
+  3. `kelurahanpekelingan.gresikkab.go.id` — Spam post phishing/scam keuangan (Indodax fake CS).
+  4. `dispendik.gresikkab.go.id` — Kebocoran error fatal PHP dan path file server (`/opt/lampp/htdocs/`).
+  5. `data.gresikkab.go.id` — Misfortune konfigurasi (default page "Welcome to CentOS").
+  6. `testing-jdih.gresikkab.go.id` — Subdomain staging/testing bocor dan terindeks di Google publik tanpa proteksi auth.
 - **Arsitektur & Fitur AI**:
   - **Dual-Mode Headless Crawler**: Worker background (cron) melakukan inspeksi berkala dengan dua User-Agent (browser umum vs Googlebot).
   - **Multimodal Visual & Semantic Inspector**: Screenshot halaman web dianalisis menggunakan Multimodal LLM (Gemini Flash Vision via 9Router) bersamaan dengan ekstraksi meta tag untuk mendeteksi deface visual maupun teks judi tersamar yang lolos dari regex.
