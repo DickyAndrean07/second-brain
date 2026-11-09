@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-09] guide | Skrip Komunikasi & Validasi Lapangan Mentor Diskominfo
+- **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
+- **Highlights**: Menyusun panduan strategi komunikasi tatap muka untuk Mas Dicky saat berhadapan dengan mentor Diskominfo: Alur validasi rasa ingin tahu (bertanya SOP/alur dinas terlebih dahulu) ➔ menyambut masalah/keterbatasan staf dengan solusi prototipe (Skenario 1: Bidang Persandian/CSIRT untuk Subdomain Guard, Skenario 2: Bidang Aptika untuk Lapor GUS Web Triage).
+
 ## [2026-11-09] architecture | Web Dashboard CRUD + One-Click Copy Bridge untuk Lapor GUS
 - **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
 - **Highlights**: Memperbarui arsitektur sistem Lapor GUS untuk memenuhi syarat akademik kampus (Aplikasi Web minimal CRUD) sekaligus menjaga prinsip Human-in-the-Loop dinas. Sistem dibangun sebagai Web Dashboard Triage (Next.js, Tailwind, Drizzle, PostgreSQL) dengan pemetaan operasi CRUD lengkap (Create via webhook WA/manual, Read tabel antrean berfilter OPD/status/urgensi, Update editor draf & pelacakan status, Delete arsip spam) serta tombol *One-Click Copy per Field* (`[ 📋 ]`) untuk penginputan cepat dan aman ke portal `servicedesk.gresikkab.go.id`.

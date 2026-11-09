@@ -140,6 +140,26 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
 
 ---
 
+## 🗣️ Panduan Diskusi & Skrip Validasi Lapangan (Pintu Masuk Mentor Diskominfo)
+
+Strategi komunikasi tatap muka: **Validasi Alur/SOP Lapangan Terlebih Dahulu ➔ Sambut dengan Solusi Prototipe Konkret**. Jangan menggurui atau langsung menuduh sistem dinas memiliki kelemahan.
+
+### Skenario 1 — Jalur Keamanan Siber & Subdomain (Bidang Persandian / CSIRT)
+1. **Pertanyaan Pembuka (Eksplorasi Alur)**:
+   > *"Pak, saya izin konfirmasi terkait alur di Pemkab. Kalau ada website atau subdomain OPD yang mengalami peretasan, deface, atau kendala server, itu biasanya dinas terkait yang melapor ke Diskominfo, atau memang dari tim CSIRT sini yang rutin memonitoring puluhan subdomain tersebut?"*
+2. **Respon Masuk Solusi (Pivot to Proposal)**:
+   - Begitu mentor menjelaskan keterbatasan pemantauan manual:
+   > *"Pas sekali Pak. Kebetulan saya sempat menganalisis dan menemukan beberapa subdomain terindikasi injeksi cloaking SEO tersembunyi. Dari situ saya mengajukan inisiatif: bagaimana jika kami buatkan **crawler otomatis berkala (Dual-Mode Client vs Bot) terintegrasi AI Vision**, sehingga jika terdeteksi anomali atau deface, notifikasi langsung dikirimkan ke Telegram tim teknis Diskominfo sebelum dampak menyebar luas."*
+
+### Skenario 2 — Jalur Layanan Publik & Aduan Warga (Bidang Aptika / IKP)
+1. **Pertanyaan Pembuka (Eksplorasi Alur)**:
+   > *"Pak, terkait kanal pengaduan masyarakat seperti Lapor GUS dan GoWA, apakah alur pengelolaannya terpusat di bawah Diskominfo sampai proses penerbitan tiket di portal Service Desk?"*
+2. **Respon Masuk Solusi (Pivot to Proposal)**:
+   - Begitu mentor menjelaskan alur rekap dan beban verifikasi chat manual admin:
+   > *"Menarik sekali Pak. Saya sempat mencoba kanal tersebut, dan melihat peluang otomasi saat jam kerja kantor berakhir. Rencana kami di proposal ingin membangun **Web Dashboard Triage terintegrasi WhatsApp AI Assistant**. Pesan warga dirapikan otomatis oleh AI, dinas tujuannya terklasifikasi, dan admin tinggal menggunakan fitur salin satu-klik (one-click copy) ke portal Service Desk tanpa risiko mengubah database produksi dinas."*
+
+---
+
 ## 📌 Rekomendasi Eksekusi
 1. **Amankan PT GCS**: Jangan tolak penerimaan PT GCS terlebih dahulu sebelum ada kepastian hitam di atas putih dari Diskominfo.
 2. **Pengajuan ke Diskominfo**: Bawa proposal ringkas 1-2 lembar berbasis usulan **AI Subdomain Guard** (menyertakan bukti live temuan cloaking judol di domain Pemkab) langsung ke bagian SPBE/Persandian.
