@@ -142,7 +142,14 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
 
 ## 🗣️ Panduan Diskusi & Skrip Validasi Lapangan (Pintu Masuk Mentor Diskominfo)
 
-Strategi komunikasi tatap muka: **Validasi Alur/SOP Lapangan Terlebih Dahulu ➔ Sambut dengan Solusi Prototipe Konkret**. Jangan menggurui atau langsung menuduh sistem dinas memiliki kelemahan.
+Strategi komunikasi tatap muka: **Posisikan Diri Ingin Belajar & Meminta Arahan ➔ Validasi Alur/SOP Lapangan ➔ Sambut dengan Solusi Prototipe Konkret**. Jangan menggurui atau langsung menuduh sistem dinas memiliki kelemahan.
+
+### 🚪 Etika & Skrip Pembuka Pertama Kali Masuk Ruangan (Ice Breaking Rendah Hati)
+> *"Selamat pagi/siang Pak. Mohon izin memperkenalkan diri, saya Dicky dan ini rekan saya Bagus dari Prodi Teknik Informatika Universitas Muhammadiyah Gresik.*
+> 
+> *Tujuan kedatangan kami ke sini ingin bersilaturahmi sekaligus memohon izin untuk melaksanakan Praktek Kerja Lapangan (PKL) di Diskominfo Gresik. Di dalam proposal, kami sudah menyusun beberapa rancangan inisiatif awal berbasis web development dan automasi AI.*
+> 
+> *Namun sebelum melangkah lebih jauh, **kami ingin sowan dan memohon bimbingan serta konfirmasi dari Bapak terlebih dahulu**, sekiranya bidang atau program mana yang saat ini paling relevan dan menjadi prioritas kebutuhan dinas, agar apa yang kami pelajari dan bangun nanti benar-benar memberikan manfaat nyata."*
 
 ### Skenario 1 — Jalur Keamanan Siber & Subdomain (Bidang Persandian / CSIRT)
 1. **Pertanyaan Pembuka (Eksplorasi Alur)**:

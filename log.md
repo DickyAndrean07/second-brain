@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-09] guide | Skrip Ice Breaking Rendah Hati Masuk Ruangan Mentor Diskominfo
+- **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
+- **Highlights**: Menambahkan template skrip pembuka tatap muka yang sopan dan rendah hati untuk Mas Dicky saat pertama kali berhadapan dengan mentor Diskominfo. Berfokus pada niat sowan, memohon bimbingan, dan mengonfirmasi prioritas kebutuhan dinas sebelum memaparkan usulan sistem.
+
 ## [2026-11-09] guide | Skrip Komunikasi & Validasi Lapangan Mentor Diskominfo
 - **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
 - **Highlights**: Menyusun panduan strategi komunikasi tatap muka untuk Mas Dicky saat berhadapan dengan mentor Diskominfo: Alur validasi rasa ingin tahu (bertanya SOP/alur dinas terlebih dahulu) ➔ menyambut masalah/keterbatasan staf dengan solusi prototipe (Skenario 1: Bidang Persandian/CSIRT untuk Subdomain Guard, Skenario 2: Bidang Aptika untuk Lapor GUS Web Triage).
