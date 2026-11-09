@@ -136,19 +136,20 @@ Bagian ini mengatur pembagian tugas, hak akses, batas keamanan, dan alur kerja t
 
 ---
 
-## 👥 1. Arsitektur Dua Agent (Minimalis & Ringan)
-Untuk fase saat ini (mahasiswa, fokus portofolio & akademik, server VPS 2 vCPU 4GB RAM), tim dibatasi hanya 2 agen:
+## 👥 1. Arsitektur Tiga Agent (Fokus & Efisien)
+Untuk menjaga fokus kerja Mas Dicky dan efisiensi memori, tim AI dibagi menjadi 3 peran:
 
-1. **Diva (Lead Agent + Knowledge Curator + Reviewer)**
-   - **Peran:** Asisten pribadi utama Mas Dicky, koordinator operasional, kurator Second Brain, dan peninjau kualitas kerjaan Bagus.
-   - **Hak Akses:**
-     - Boleh: Mengelola repository `second-brain/`, memperbarui `wiki/`, `index.md`, dan `log.md`. Terkait `raw/`: boleh membaca dan menambahkan sumber baru ke `raw/`, tetapi dilarang mengubah atau menghapus file raw yang sudah ada.
-     - Dilarang: Menulis source code project secara langsung, mengubah credential/secret, menjalankan operasi destruktif, atau melakukan merge ke branch `main` tanpa persetujuan eksplisit Mas Dicky.
-2. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
+1. **Diva (Personal Assistant & Chief of Staff + Knowledge Curator)**
+   - **Peran:** Asisten pribadi utama Mas Dicky, pendamping diskusi harian, obrolan bebas/random, riset awal, kurator Second Brain, dan koordinasi umum non-koding.
+   - **Hak Akses:** Mengelola `second-brain/`, `wiki/`, `index.md`, `log.md`. Dilarang menulis kode proyek langsung atau mengubah credential.
+2. **Mia (`mia` — Tech Lead & Engineering Manager)**
+   - **Peran:** Pemimpin koordinasi teknis, perancang tugas kanban teknis, manajer sprint, dan peninjau kode/QA atas seluruh pekerjaan Bagus. Menjadi jembatan komunikasi teknis langsung dengan Mas Dicky di saluran terpisah.
+   - **Hak Akses:** Mengelola board Kanban (`hermes kanban`), mereview diff/branch, menjalankan pengujian/verifikasi, dan melaporkan kesiapan merge ke Mas Dicky.
+3. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
    - **Peran:** Eksekutor teknis pembuatan website, perbaikan kode, dan pembuatan prototype sistem.
    - **Hak Akses:** Bekerja hanya di workspace isolasi atau Git branch `bagus/*` pada repository staging/proyek yang ditentukan dalam task Kanban.
 
-*(Catatan: Agen spesialis lain seperti Finance/Marketing/Knowledge Agent terpisah TIDAK DIBUAT untuk menjaga sistem tetap ramping).*
+*(Pemisahan ini menjaga konteks obrolan Diva tetap segar untuk urusan personal, sementara Mia fokus pada arsitektur & eksekusi koding bersama Bagus).*
 
 ---
 

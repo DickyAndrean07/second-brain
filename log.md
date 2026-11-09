@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-09] refactor | Onboarding Agen Baru Mia (Tech Lead & Engineering Manager)
+- **Target Files**: [[AGENTS.md]], [[agent.md]], `~/.hermes/profiles/mia/`
+- **Highlights**: Memperluas arsitektur AI team menjadi 3 agen: Diva (Personal Assistant & Chief of Staff), Mia (`mia` — Tech Lead & Engineering Manager), dan Bagus (`web-dev-bagus` — Builder Engineer). Mia dibuat untuk memisahkan konteks obrolan personal/random Mas Dicky di Diva dengan fokus teknis orkestrasi Kanban, pembuatan spesifikasi task, dan code review pekerjaan Bagus. Profil `mia` berhasil dibuat, dikonfigurasi dengan SOUL.md khusus, dan lulus uji coba CLI.
+
 ## [2026-11-09] guide | Skrip Ice Breaking Rendah Hati Masuk Ruangan Mentor Diskominfo
 - **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
 - **Highlights**: Menambahkan template skrip pembuka tatap muka yang sopan dan rendah hati untuk Mas Dicky saat pertama kali berhadapan dengan mentor Diskominfo. Berfokus pada niat sowan, memohon bimbingan, dan mengonfirmasi prioritas kebutuhan dinas sebelum memaparkan usulan sistem.
