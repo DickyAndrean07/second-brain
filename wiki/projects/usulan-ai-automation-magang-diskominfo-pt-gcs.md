@@ -30,6 +30,11 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
 
 ## 🏛️ Usulan Proyek AI Automation — Diskominfo Kabupaten Gresik
 
+### 📌 Judul Proposal Resmi & Kegiatan SEPEKAN
+> **"PENERAPAN AI AUTOMATION UNTUK OPTIMALISASI LAYANAN DIGITAL DAN MONITORING KEAMANAN SPBE PADA DINAS KOMUNIKASI DAN INFORMATIKA KABUPATEN GRESIK"**
+- **Fungsi**: Digunakan pada kolom form *Judul Kegiatan* portal SEPEKAN Bappeda Gresik dan sampul dokumen proposal magang/PKL.
+- **Cakupan Payung**: Mengakomodasi 2 pilar kebutuhan utama Diskominfo: Optimalisasi Layanan Digital (Aptika / Lapor GUS & Service Desk) serta Monitoring Keamanan SPBE (Persandian / CSIRT Subdomain Guard).
+
 ### 1. AI Subdomain Guard & Visual Deface Inspector (Cybersecurity AI) ⭐ [Rekomendasi Utama]
 - **Latar Belakang Masalah**:
 - Subdomain OPD Pemkab Gresik kerap menjadi sasaran empuk peretasan *Black Hat SEO* judi online karena memiliki otoritas domain (`.go.id`) tinggi.

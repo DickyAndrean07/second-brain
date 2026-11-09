@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-09] decision | Penetapan Judul Resmi Proposal Magang & SEPEKAN Diskominfo Gresik
+- **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
+- **Highlights**: Menetapkan dan mencatat judul proposal resmi untuk pendaftaran SEPEKAN dan pengajuan fisik Diskominfo Gresik: *"PENERAPAN AI AUTOMATION UNTUK OPTIMALISASI LAYANAN DIGITAL DAN MONITORING KEAMANAN SPBE PADA DINAS KOMUNIKASI DAN INFORMATIKA KABUPATEN GRESIK"*. Judul payung ini mengakomodasi pilar Layanan Digital (Lapor GUS / Service Desk) dan Keamanan Siber (Subdomain Guard / CSIRT).
+
 ## [2026-11-07] spec | Hermes Web Studio — Handover Context & Quality Gate Protocol
 - **Target Files**: [[wiki/projects/hermes-web-studio.md]], [[index.md]]
 - **Highlights**: Menyimpan konteks serah terima (handover) Hermes Web Studio (`D:\projects\visual-engine`). Mendefinisikan peran Diva sebagai Technical Architect & Quality Gate Reviewer untuk implementasi Codex Desktop, pembagian 4 fase (Phase 4A–4D), aturan pembekuan `engine/`, isolasi `studio/`, evaluasi kritis hasil M3B, serta 9 dimensi audit dan format baku laporan evaluasi gate (`PASS`, `CONDITIONAL PASS`, `FAIL`, `BLOCKED`).
