@@ -11,6 +11,10 @@ Setiap entri diawali dengan prefix `## [YYYY-MM-DD] action | Title` agar mudah d
 
 ---
 
+## [2026-11-09] architecture | Web Dashboard CRUD + One-Click Copy Bridge untuk Lapor GUS
+- **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
+- **Highlights**: Memperbarui arsitektur sistem Lapor GUS untuk memenuhi syarat akademik kampus (Aplikasi Web minimal CRUD) sekaligus menjaga prinsip Human-in-the-Loop dinas. Sistem dibangun sebagai Web Dashboard Triage (Next.js, Tailwind, Drizzle, PostgreSQL) dengan pemetaan operasi CRUD lengkap (Create via webhook WA/manual, Read tabel antrean berfilter OPD/status/urgensi, Update editor draf & pelacakan status, Delete arsip spam) serta tombol *One-Click Copy per Field* (`[ 📋 ]`) untuk penginputan cepat dan aman ke portal `servicedesk.gresikkab.go.id`.
+
 ## [2026-11-09] decision | Penetapan Judul Resmi Proposal Magang & SEPEKAN Diskominfo Gresik
 - **Target Files**: [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs.md]]
 - **Highlights**: Menetapkan dan mencatat judul proposal resmi untuk pendaftaran SEPEKAN dan pengajuan fisik Diskominfo Gresik: *"PENERAPAN AI AUTOMATION UNTUK OPTIMALISASI LAYANAN DIGITAL DAN MONITORING KEAMANAN SPBE PADA DINAS KOMUNIKASI DAN INFORMATIKA KABUPATEN GRESIK"*. Judul payung ini mengakomodasi pilar Layanan Digital (Lapor GUS / Service Desk) dan Keamanan Siber (Subdomain Guard / CSIRT).

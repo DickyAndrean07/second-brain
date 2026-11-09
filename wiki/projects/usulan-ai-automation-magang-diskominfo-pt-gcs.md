@@ -54,19 +54,22 @@ Dokumen referensi eksplorasi usulan sistem berbasis **Web Development** dan **AI
   - **Incident Report & Alert Dispatcher**: Bot Telegram CSIRT mengirimkan alert darurat otomatis disertai ringkasan analisis ancaman ketika anomali terdeteksi.
 - **Tech Stack**: Next.js (Dashboard Admin), Playwright/Puppeteer, PostgreSQL, Drizzle ORM, 9Router (Gemini Flash Vision), Telegram Bot API.
 
-### 2. AI Intake & Triage Assistant Lapor GUS — Service Desk Bridge (Human-in-the-Loop) ⭐ [Rekomendasi Utama Presentasi]
-- **Latar Belakang Masalah**:
-  - Portal `servicedesk.gresikkab.go.id` mewajibkan registrasi akun, verifikasi email, dan form panjang yang rumit bagi warga awam.
-  - Warga memilih chat WhatsApp (Lapor GUS / GoWA) dengan pesan tidak lengkap, bahasa santai/Jawa Gresikan, dan sering tertimbun di luar jam kerja (hanya greeting message otomatis).
-  - Admin Diskominfo harus membaca, mengonfirmasi kelengkapan data manual, dan mengetik ulang satu per satu ke web Service Desk.
-- **Arsitektur & Pendekatan Dua Fase**:
-  - **Fase 1 (Human-in-the-Loop / Presentasi Awal Tanpa Risiko)**:
-    - Chat WA warga dipandu interaktif oleh AI jika data belum lengkap (lokasi, foto, rincian).
-    - AI mengekstrak entitas penting (Nama, No WA, Lokasi, Kategori, Urgensi) dan menentukan rekomendasi dinas/OPD terkait.
-    - AI menyusun draf laporan terstruktur siap salin-tempel (*ready-to-copy*) untuk admin Diskominfo, menjaga kendali penuh admin dan keamanan sistem internal tanpa menyentuh source code atau database produksi.
-  - **Fase 2 (Otomasi API Lanjutan)**:
-    - Jika izin dan kredensial/API staging diberikan mentor, draf langsung ditembakkan via REST API / endpoint ke Service Desk.
-- **Tech Stack**: Node.js / Baileys (WA), 9Router (Gemini Flash / Structured Output JSON), PostgreSQL.
+### 2. AI Intake & Triage Assistant Lapor GUS — Service Desk Bridge (Human-in-the-Loop Web Dashboard) ⭐ [Rekomendasi Utama Presentasi]
+- **Latar Belakang Masalah & Kebutuhan Akademik**:
+  - Portal `servicedesk.gresikkab.go.id` mewajibkan registrasi akun, verifikasi email, dan form berbelit yang enggan digunakan warga.
+  - Warga memilih chat WhatsApp (Lapor GUS / GoWA) dengan pesan informal, tidak lengkap, dan tertimbun saat jam kerja berakhir.
+  - Tugas Khusus kampus mewajibkan output aplikasi **berbentuk Web minimal CRUD**.
+- **Arsitektur Sistem (Next.js Web Dashboard + WA AI Gateway)**:
+  - **Pintu Masuk Warga**: Chat WhatsApp interaktif memandu warga melengkapi data (lokasi, foto, rincian keluhan).
+  - **AI Parser & Router Engine**: Mengekstrak data tidak berstruktur menjadi JSON baku dan mengklasifikasikan dinas (OPD) tujuan.
+  - **Web Dashboard Triage (CRUD Akademik)**:
+    - **Create**: Tiket aduan masuk otomatis dari webhook WA/AI ke database PostgreSQL, serta form input manual jika warga melapor via telepon/kantor.
+    - **Read**: Tabel antrean aduan interaktif lengkap dengan filter dinas, status disposisi, dan tingkat urgensi (Tinggi/Sedang/Rendah).
+    - **Update**: Editor draf aduan sebelum disahkan, penandaan status (`Draf` ➔ `Di-input ke Service Desk` ➔ `Selesai`), serta input nomor tiket resmi.
+    - **Delete**: Fitur arsip/hapus untuk menyaring spam, ujaran kebencian, atau aduan duplikat.
+  - **Fitur Human-in-the-Loop (Jembatan Aman ke Service Desk)**:
+    - Dilengkapi tombol **One-Click Copy per Field** (`[ 📋 ]`) pada dashboard (Subjek, Dinas, Deskripsi Terstruktur) untuk memudahkan admin menyalin-tempel ke form terpisah `servicedesk.gresikkab.go.id` tanpa re-typing manual dan tanpa risiko menyentuh database produksi dinas.
+- **Tech Stack**: Next.js (App Router), Tailwind CSS, PostgreSQL, Drizzle ORM, Node.js / Baileys (WA), 9Router (Gemini Flash).
 
 ### 3. AI WhatsApp Assistant Pelayanan Terpadu & PPID (Agentic RAG)
 - **Latar Belakang Masalah**:
