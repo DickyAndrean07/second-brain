@@ -54,6 +54,10 @@ Spesifikasi produk, arsitektur teknis, dan PRD proyek yang dibangun:
 
 - [[wiki/projects/edunotify-prd|Product Requirements Document (PRD) — EduNotify MVP]] — Dokumen kebutuhan produk lengkap sistem absensi sekolah estafet berbasis jadwal, integrasi WhatsApp Click-to-Chat manual, Early Warning System deterministik, dan analitik AI provider-agnostic.
 - [[wiki/projects/edunotify-tasks|Paket Task Implementasi EduNotify MVP (Handoff Bagus)]] — Spesifikasi 6 task Kanban resmi implementasi EduNotify untuk Bagus mencakup kriteria DoD, dependensi, dan batasan keamanan.
+- [[wiki/projects/edunotify-design-system|EduNotify Design System — Desktop & Mobile Webapp]] — Acuan visual resmi redesain UI EduNotify (desktop Light/Dark & mobile responsive) berdasarkan referensi edunotify-design-reference-desktop-mobile.html (Logo 03 Insight).
+- [[wiki/projects/usulan-ai-automation-magang-diskominfo-pt-gcs|Usulan Proyek AI Automation Magang — Diskominfo Gresik vs PT GCS]] — Analisis komparatif dan 8 usulan sistem AI Automation (Next.js, Vision/OCR, LLM Agent, Subdomain Security Monitor) untuk persiapan magang/tugas khusus Mas Dicky.
+- [[wiki/projects/visual-engine|Visual Engine — Browser Automation & Animation Intelligence]] — Arsitektur sistem inspeksi browser, eksperimen scroll deterministik (Milestone 2B), dan klasifikasi animasi cerdas (Milestone 2C) berbasis Playwright di Windows.
+- [[wiki/projects/hermes-web-studio|Hermes Web Studio — Handover Context & Quality Gate Architecture]] — Dokumen acuan arsitektur alur kerja web development bertenaga AI (Phase 4A–4D), integrasi Visual Engine, dan protokol review quality gate untuk evaluasi Codex Desktop.
 
 ---
 

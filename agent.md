@@ -136,19 +136,20 @@ Bagian ini mengatur pembagian tugas, hak akses, batas keamanan, dan alur kerja t
 
 ---
 
-## 👥 1. Arsitektur Dua Agent (Minimalis & Ringan)
-Untuk fase saat ini (mahasiswa, fokus portofolio & akademik, server VPS 2 vCPU 4GB RAM), tim dibatasi hanya 2 agen:
+## 👥 1. Arsitektur Tiga Agent (Fokus & Efisien)
+Untuk menjaga fokus kerja Mas Dicky dan efisiensi memori, tim AI dibagi menjadi 3 peran:
 
-1. **Diva (Lead Agent + Knowledge Curator + Reviewer)**
-   - **Peran:** Asisten pribadi utama Mas Dicky, koordinator operasional, kurator Second Brain, dan peninjau kualitas kerjaan Bagus.
-   - **Hak Akses:**
-     - Boleh: Mengelola repository `second-brain/`, memperbarui `wiki/`, `index.md`, dan `log.md`. Terkait `raw/`: boleh membaca dan menambahkan sumber baru ke `raw/`, tetapi dilarang mengubah atau menghapus file raw yang sudah ada.
-     - Dilarang: Menulis source code project secara langsung, mengubah credential/secret, menjalankan operasi destruktif, atau melakukan merge ke branch `main` tanpa persetujuan eksplisit Mas Dicky.
-2. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
+1. **Diva (Personal Assistant & Chief of Staff + Knowledge Curator)**
+   - **Peran:** Asisten pribadi utama Mas Dicky, pendamping diskusi harian, obrolan bebas/random, riset awal, kurator Second Brain, dan koordinasi umum non-koding.
+   - **Hak Akses:** Mengelola `second-brain/`, `wiki/`, `index.md`, `log.md`. Dilarang menulis kode proyek langsung atau mengubah credential.
+2. **Mia (`mia` — Tech Lead & Engineering Manager)**
+   - **Peran:** Pemimpin koordinasi teknis, perancang tugas kanban teknis, manajer sprint, dan peninjau kode/QA atas seluruh pekerjaan Bagus. Menjadi jembatan komunikasi teknis langsung dengan Mas Dicky di saluran terpisah.
+   - **Hak Akses:** Mengelola board Kanban (`hermes kanban`), mereview diff/branch, menjalankan pengujian/verifikasi, dan melaporkan kesiapan merge ke Mas Dicky.
+3. **Bagus (`web-dev-bagus` — Builder Agent + Web Developer + AI Automation)**
    - **Peran:** Eksekutor teknis pembuatan website, perbaikan kode, dan pembuatan prototype sistem.
    - **Hak Akses:** Bekerja hanya di workspace isolasi atau Git branch `bagus/*` pada repository staging/proyek yang ditentukan dalam task Kanban.
 
-*(Catatan: Agen spesialis lain seperti Finance/Marketing/Knowledge Agent terpisah TIDAK DIBUAT untuk menjaga sistem tetap ramping).*
+*(Pemisahan ini menjaga konteks obrolan Diva tetap segar untuk urusan personal, sementara Mia fokus pada arsitektur & eksekusi koding bersama Bagus).*
 
 ---
 
@@ -180,7 +181,7 @@ Setiap task yang dibuat Diva untuk Bagus di Hermes Kanban WAJIB memiliki kompone
 
 ---
 
-## 🔄 4. Status Alur Kerja Task Kanban
+## 🔄 4. Status Alur Kerja Task Kanban & Siklus Estafet Otonom (Autonomous Relay Loop)
 Setiap task harus bergerak melalui status yang jelas:
 ```text
 BACKLOG ──► READY ──► IN_PROGRESS ──► REVIEW ──► APPROVED ──► DONE
@@ -189,14 +190,40 @@ BACKLOG ──► READY ──► IN_PROGRESS ──► REVIEW ──► APPROVE
                                 CHANGES_REQUESTED
                                   (kembali ke IN_PROGRESS)
 ```
-- **REVIEW**: Diva meninjau kode dan hasil testing Bagus.
-- **CHANGES_REQUESTED**: Diva mengembalikan task ke Bagus jika ada kriteria yang melanggar SOP atau belum lolos uji.
-- **APPROVED**: Mas Dicky memberikan persetujuan final setelah review Diva lolos.
-- **DONE**: Task selesai dan di-merge ke branch utama oleh Mas Dicky.
+- **REVIEW**: Diva meninjau kode, bukti testing, dan kepatuhan terhadap PRD.
+- **CHANGES_REQUESTED**: Diva mengembalikan instruksi revisi terarah ke Bagus jika ada kriteria yang melanggar SOP atau belum lolos uji.
+- **APPROVED**: Status validasi teknis lolos dari Diva.
+- **DONE**: Task diselesaikan dan siap digabung ke branch utama oleh Mas Dicky.
+
+### Alur Eksekusi Multi-Task Otonom (Autonomous Pipeline Loop):
+Untuk proyek bertahap (seperti 6 task EduNotify):
+1. **Diva Mengelola Estafet Task**: Diva bertindak sebagai orkestrator pipeline.
+2. **Review & Auto-Dispatch**:
+   - Jika Task $N$ selesai dan diajukan Bagus via `kanban_request_review`, Diva langsung mengaudit hasil kode di branch fitur.
+   - **Jika Gagal**: Diva mengirim feedback revisi (`CHANGES_REQUESTED`) ke Bagus.
+   - **Jika Lolos**: Diva menyetujui Task $N$ (`APPROVED`/`DONE`), lalu **secara otomatis membuat dan mengirim Task $N+1$ ke Kanban** untuk dikerjakan Bagus tanpa perlu menunggu Mas Dicky menjadi kurir pesan.
+3. **Penyampaian Laporan Akhir**:
+   - Siklus estafet berlanjut otomatis sampai seluruh task (Task 1 s/d 6) selesai dikerjakan dan divalidasi.
+   - Begitu seluruh rangkaian task tuntas, Diva menyusun laporan komprehensif kepada Mas Dicky untuk review final dan persetujuan merge ke `main`.
+4. **Pencegahan Kegagalan (Circuit Breaker)**:
+   - Jika Bagus mengalami error kritis atau gagal memenuhi kriteria sebanyak 2 kali berturut-turut pada task yang sama, loop otomatis dihentikan dan Diva langsung melapor kepada Mas Dicky untuk arahan lanjutan.
 
 ---
 
-## 🧪 5. Pendekatan Testing Pragmatis
+## 🎨 5. Alur Kerja Desain UI: Mockup-First Policy (Anti-Revisi Besar)
+Untuk setiap pembuatan komponen antarmuka baru, halaman landing page, atau perombakan visual besar:
+1. **Mockup HTML Statis Dahulu**: Sebelum menulis komponen Next.js/React dinamis yang rumit, Bagus wajib menyusun 1 file preview mockup visual mandiri (file HTML/CSS statis terisolasi, contoh: `docs/design-mockup.html`).
+2. **Review Visual oleh Owner**: Mas Dicky membuka file mockup tersebut langsung di browser laptop untuk meninjau:
+   - Keselarasan warna dan kontras (Dark/Light mode).
+   - Kerapian tata letak, proporsi kartu, dan hierarki tipografi (anti-slop).
+   - Kualitas aset visual (dilarang menggunakan gambar AI kartun/cacat pada UI produk).
+3. **Persetujuan (Design Gate)**:
+   - Jika visual ditolak/butuh koreksi: Bagus merevisi file mockup statis tersebut terlebih dahulu (cepat dan hemat waktu).
+   - Jika disetujui Mas Dicky: Bagus baru diperbolehkan mengonversi mockup tersebut menjadi komponen React/Tailwind dinamis dan mengintegrasikannya ke proyek utama.
+
+---
+
+## 🧪 6. Pendekatan Testing Pragmatis
 Bagus tidak diwajibkan menggunakan TDD (Test-Driven Development) penuh untuk semua pekerjaan. Gunakan pendekatan sesuai jenis proyek:
 - **Backend / Logika Bisnis / API**: Wajib **Unit Test** otomatis.
 - **UI / Frontend / Halaman Visual**: Wajib **Browser & Visual Check** (responsivitas, layout, navigasi).
@@ -204,7 +231,7 @@ Bagus tidak diwajibkan menggunakan TDD (Test-Driven Development) penuh untuk sem
 
 ---
 
-## 📊 6. Standar Laporan Hasil Kerja Bagus
+## 📊 7. Standar Laporan Hasil Kerja Bagus
 Setiap kali Bagus meminta review (`kanban_request_review`), laporannya WAJIB menyertakan:
 1. **Ringkasan Perubahan**: Apa saja yang telah dibuat/diperbaiki.
 2. **File yang Diubah**: Daftar file yang ditambah, diedit, atau dihapus.
@@ -216,7 +243,7 @@ Setiap kali Bagus meminta review (`kanban_request_review`), laporannya WAJIB men
 
 ---
 
-## 🛡️ 7. SOP Onboarding Agen Baru
+## 🛡️ 8. SOP Onboarding Agen Baru
 Jika di masa depan tim membutuhkan agen baru, ikuti prosedur ketat berikut:
 1. **Kebutuhan Baru Muncul**: Muncul kebutuhan spesifik yang tidak dapat ditangani Diva atau Bagus.
 2. **Analisis Kebutuhan**: Diva menganalisis apakah benar-benar butuh agen baru atau cukup skill tambahan.
@@ -231,7 +258,7 @@ Jika di masa depan tim membutuhkan agen baru, ikuti prosedur ketat berikut:
 
 ---
 
-## 📦 8. Pemisahan Repositori Kerja
+## 📦 9. Pemisahan Repositori Kerja
 Pekerjaan dipisahkan dalam 4 repositori independen:
 1. **`second-brain/`**: Pusat dokumentasi, wiki pengetahuan, dan SOP tim (dikelola Diva).
 2. **`portfolio-website/`**: Website portofolio pribadi Mas Dicky untuk melamar magang (dikerjakan Bagus).
